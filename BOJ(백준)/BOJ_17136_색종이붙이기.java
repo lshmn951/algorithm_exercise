@@ -60,7 +60,7 @@ public class BOJ_17136_색종이붙이기 {
 	}
 	public static void per(int x,int y,int [] paper) {
 		boolean c = true;
-		boolean [][] copy = new boolean[10][10];;
+		boolean [][] copy = new boolean[10][10];
 		for(int i=0;i<10;i++) {
 			copy[i] = arr[i].clone();
 		}
@@ -116,8 +116,6 @@ public class BOJ_17136_색종이붙이기 {
 				arr[i][j] = false;
 			}
 		}
-
-
 		return true;
 	}
 	public static boolean isin(int x,int y) {
