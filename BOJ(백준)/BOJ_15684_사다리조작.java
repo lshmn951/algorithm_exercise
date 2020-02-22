@@ -1,4 +1,4 @@
-package algo_exercise.BOJ;
+package boj;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,12 +33,12 @@ public class BOJ_15684_사다리조작 {
 		for(int i=1;i<=h;i++) {
 			for(int j=1;j<n;j++) {
 				if(arr[i][j]==0 && arr[i][j+1]==0) {
-					//list.add(new Point(i,j)); //추가로 설치할 수 있는 가로선 리스트
+					list.add(new Point(i,j)); //추가로 설치할 수 있는 가로선 리스트
 				}
 			}
 		}
-		int result=0;
-		for(int i=0;i<list.size();i++) {//i 개수 만큼 사다리를 설치해본다
+		int result=-1;
+		for(int i=0;i<=list.size();i++) {//i 개수 만큼 사다리를 설치해본다
 			if(i>3) {
 				result = -1;
 				break;
@@ -47,7 +47,6 @@ public class BOJ_15684_사다리조작 {
 				result = i;
 				break;
 			}
-			
 		}
 		if(list.size()==0) {
 			if(ladder(new Point[0])) {
@@ -65,7 +64,6 @@ public class BOJ_15684_사다리조작 {
 	public static boolean com(int r,int k,Point[] p,int before) {//r개의 사다리를 조합으로 뽑아냄
 		if(r==k) {
 			if(ladder(p)) {
-				
 				return true;
 			}
 			return false;
@@ -79,6 +77,7 @@ public class BOJ_15684_사다리조작 {
 		return false;
 	}
 	public static boolean ladder(Point[] p) {//사다리 타기 - i번째가 내려가서 i번이 나오는지 체크
+		copy = new int [h+1][n+1];
 		for(int i=1;i<=h;i++) {
 			copy[i] = arr[i].clone();
 		}
@@ -110,5 +109,10 @@ public class BOJ_15684_사다리조작 {
 			this.y = y;
 		}
 
+		@Override
+		public String toString() {
+			return "Point [x=" + x + ", y=" + y + "]";
+		}
+		
 	}
 }
