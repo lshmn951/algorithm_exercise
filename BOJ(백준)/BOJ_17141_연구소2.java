@@ -1,4 +1,4 @@
-package algo_exercise.BOJ;
+package boj;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,15 +12,14 @@ import java.util.StringTokenizer;
 /**
  * 
  * @author 이성현
- * @since 2020. 2. 20.
- * @see https://www.acmicpc.net/problem/17142
+ * @since 2020. 2. 23.
+ * @see https://www.acmicpc.net/problem/17141
  * @mem
  * @time
  * @caution 조합과 bfs 
- * 			0으로 돼있는 부분이 언제 채워졌나만 확인하면 되는 문제
- * 			활성과 비활성 바이러스 모두 카운트에서 제외
+ * 			3와 다르게 활성화된  바이러스만 카운트에서 제외하면 된다.
  */
-public class BOJ_17142_연구소3 {
+public class BOJ_17141_연구소2 {
 	static int N;
 	static int K;
 	static int [][] arr;
@@ -45,7 +44,7 @@ public class BOJ_17142_연구소3 {
 					arr[i][j]=-1;
 				}
 				if(arr[i][j]==2) {
-					arr[i][j]=-2;
+					arr[i][j]= 0;
 					vlist.add(new Virus(i,j,0));
 				}
 			}
@@ -94,19 +93,19 @@ public class BOJ_17142_연구소3 {
 				if(arr[r][c]==-1) {
 					continue;
 				}
-				if(copy[r][c]==-2 || copy[r][c]==0) {
+				if(copy[r][c]==0) {
 					copy[r][c] = temp.cnt+1;
 					que.add(new Virus(r,c,temp.cnt+1));
 				}
 			}
 		}
+		for(int i=0;i<v.length;i++) {
+			copy[v[i].x][v[i].y]=-2;
+		}
 		for(int i=0;i<N;i++) {
 			for(int j=0;j<N;j++) {
 				if(copy[i][j]==0) {
 					return -1;
-				}
-				if(arr[i][j]==-2) {
-					continue;
 				}
 				max = Math.max(max, copy[i][j]);
 			}
