@@ -5,7 +5,8 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
-
+// 시뮬레이션
+// 10이하로 움직이라고 나와있지만 10번이 되면 빠져나오게 해야 맞출수 있다.
 public class BOJ_13460_구슬탈출2 {
 	static char [][]arr;
 	static boolean [][] visit;
