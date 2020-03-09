@@ -23,7 +23,6 @@ public class SWEA_7793_오나의여신님 {
 			int count =0;
 			arr = new char [n][m];
 			Deque<Point> dq = new ArrayDeque<>();
-			Deque<Point> dq2 = new ArrayDeque<>();
 			for(int i=0;i<n;i++) {
 				String str = br.readLine();
 				for(int j=0;j<m;j++) {
@@ -49,13 +48,13 @@ public class SWEA_7793_오나의여신님 {
 						if(temp.c=='*') {
 							if(arr[r][c]=='.') {
 								arr[r][c]='*';
-								dq2.push(new Point(r,c,temp.c,0));
+								dq.add(new Point(r,c,temp.c,0));
 							}
 						}
 						else if(temp.c=='S') {
 							if(arr[r][c]=='.') {
 								arr[r][c] = 'S';
-								dq2.add(new Point(r,c,temp.c,temp.cnt+1));
+								dq.add(new Point(r,c,temp.c,temp.cnt+1));
 							}
 							else if(arr[r][c]=='D') {
 								count = temp.cnt+1;
@@ -65,9 +64,6 @@ public class SWEA_7793_오나의여신님 {
 						}
 
 					}
-				}
-				while(!dq2.isEmpty()) {
-					dq.add(dq2.pop());
 				}
 			}
 			System.out.print("#"+tc+" ");
