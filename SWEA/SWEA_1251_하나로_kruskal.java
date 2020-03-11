@@ -26,7 +26,7 @@ public class SWEA_1251_하나로_kruskal {
 			st = new StringTokenizer(br.readLine());
 			for(int i=0;i<n;i++) {
 				px[i] = Long.parseLong(st.nextToken());
-				p[i] = -1;
+				p[i] = i;
 			}
 			st = new StringTokenizer(br.readLine());
 			for(int i=0;i<n;i++) {
@@ -62,19 +62,11 @@ public class SWEA_1251_하나로_kruskal {
 		if(u==v) {
 			return false;
 		}
-		if(p[u]==p[v]) {
-			p[u]--;
-		}
-		if(p[u]<p[v]) {
-			p[v] = u;
-		}
-		else {
-			p[u] = v;
-		}
+		p[v] = u;
 		return true;
 	}
 	public static int find(int x,int []p) {
-		if(p[x]<0) {
+		if(p[x]==x) {
 			return x;
 		}
 		return p[x] = find(p[x],p);
